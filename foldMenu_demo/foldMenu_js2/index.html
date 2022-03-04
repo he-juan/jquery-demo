@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #container{
+            width: 200px;
+            border: 1px solid #000000;
+            margin: 100px auto;
+            text-align: center;
+            cursor: pointer;
+
+        }
+        #container h3{
+            background: #000000;
+            color: #ffffff;
+        }
+        .submenu{
+            display: none;
+        }
+        .submenu li:hover{
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+<!--封装找下一个兄弟的函数（解决兼容性问题），缓存变量效率高-->
+<ul id="container">
+    <li>
+        <h3>管理区</h3>
+        <ul class="submenu">
+            <li>001</li>
+            <li>002</li>
+            <li>003</li>
+        </ul>
+    </li>
+    <li>
+        <h3>交流区</h3>
+        <ul class="submenu">
+            <li>001-1</li>
+            <li>002-2</li>
+            <li>003-3</li>
+        </ul>
+    </li>
+</ul>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+
+    $("#container").prepend('<li style="color:red"><h3>解释区</h3><ul class="submenu addLi"><li>233</li></ul></li>');
+
+    var oContainer = document.getElementById("container");
+    var aH3 = oContainer.getElementsByTagName("h3");
+    var aSubMenu =oContainer.getElementsByTagName("ul");
+    var addli = oContainer.getElementsByClassName("addLi")[0]
+    var li = document.createElement("li")
+    li.textContent = "4455"
+    addli.appendChild(li)
+
+    for(var i=0; i<aH3.length; i++){
+        console.warn("aH3.length:",aH3.length)
+        aH3[i].onclick = function () {
+            console.warn("aH3[i]:",aH3[i])
+            var subMenu = next(this);
+            console.warn("subMenu:",subMenu)
+            if(subMenu.style.display == "block"){
+                subMenu.style.display = "none";
+            }else{
+                subMenu.style.display = "block";
+            }
+        };
+    }
+
+    function next(elem){
+        do{
+            elem = elem.nextSibling;
+            console.warn("elem:",elem)
+        }while(elem && elem.nodeType != 1);
+        return elem;
+    }
+</script>
+</body>
+</html>

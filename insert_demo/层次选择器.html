@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>层次选择器</title>
+</head>
+<body>
+
+<a href="http://m.biancheng.net/view/7844.html"> 层次选择器</a>
+<h3>第一个ul框架</h3>
+<ul>
+    <li>第1个元素</li>
+    <li>第2个元素</li>
+    <li>第3个元素</li>
+    <li>第4个元素</li>
+    <li>第5个元素</li>
+</ul>
+
+<br />
+
+<h3>第二个ul框架</h3>
+<ul id="contrainer">
+    <li>第1个元素</li>
+    <li>第2个元素</li>
+    <li>第3个元素</li>
+    <li>
+        <h3>嵌套元素：第4个元素</h3>
+        <ul id="ul_container">
+            <li>我是第一个孩子</li>
+            <li>我是第二个孩子</li>
+        </ul>
+    </li>
+    <li>第5个元素</li>
+</ul>
+
+<br/>
+
+
+<h3>第三个ul框架</h3>
+<ul id="contrainers">
+    <li>第1个元素</li>
+    <li>第2个元素</li>
+    <li>第3个元素</li>
+    <li class="hh">
+        <h3>嵌套元素：第4个元素</h3>
+        <ul id="ul_container">
+            <li>我是第一个孩子</li>
+            <li>我是第二个孩子</li>
+        </ul>
+    </li>
+    <li>第5个元素</li>
+    <li>第6个元素</li>
+</ul>
+
+<br/>
+
+<ul id="juanContainer">
+    <div>
+        <h3>第一波</h3>
+        <li>第1个元素</li>
+        <li>第2个元素</li>
+        <li>第3个元素</li>
+        <li>第4个元素</li>
+        <li>第5个元素</li>
+    </div>
+    <br/>
+    <div>
+        <h3>第二波</h3>
+        <li>第1个元素</li>
+        <li>第2个元素</li>
+        <li>第3个元素</li>
+        <li>第4个元素</li>
+        <li>第5个元素</li>
+    </div>
+
+    <br/>
+    <div>
+        <h3>第三波</h3>
+        <li>第1个元素</li>
+        <li>第2个元素</li>
+        <li>第3个元素</li>
+        <li>第4个元素</li>
+        <li>第5个元素</li>
+    </div>
+</ul>
+
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(function () {
+        $("li+li").css("border-top", "2px solid red");
+
+        $('#contrainer >li').css("color", "blue")  /********第二个ul框架************/
+
+        $('.hh~li').css("color", "red")  /********第三个ul框架************/
+
+        $('.hh+li').css("backgroundColor", "black")  /********第三个ul框架************/
+
+        for(let i =0; i < 3;i++){
+            let index = "第"+ i +"个元素"
+            let content = $("<li>123</li>")
+            $("#contrainers").append(content)
+
+            /***************关于juanContainer的处理***********/
+            let contentLi = $("<div><h3>456</h3></div>")
+            $("#juanContainer").append(contentLi)
+
+        }
+    })
+</script>
+</html>

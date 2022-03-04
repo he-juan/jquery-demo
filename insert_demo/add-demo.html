@@ -1,0 +1,59 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //获取按钮并设置点击事件
+            $("button").click(function(){
+                //获取输入框里面的值
+                var value = $("input[name = 'uname']").val();
+                //
+                switch ($(this).html()){
+                    case "前添加":
+                        //获取到ul并在其前面添加
+                        //$("ul").prepend("<li>" + value +"</li>");
+                        $("<li>" + value +"</li>").prependTo("ul");
+                        break;
+                    case "后追加":
+                        $("ul").append("<li>" + value +"</li>");
+                        //$("<li>" + value +"</li>").appendTo("ul");
+                        break;
+                }
+
+            });
+
+
+            var arrFir=[{"name":"百度",'link':'https://www.baidu.com'},{"name":"w3school",'link':'http://www.w3school.com.cn/jquery/jquery_dom_get.asp'},{"name":"runoob",'link':'http://www.runoob.com/js/js-tutorial.html'}];
+            var arrSec=['aaa','bbb','ccc'];
+            for(var i=0;i<arrFir.length;i++){
+                $('#fir').append('<li><a href='+arrFir[i].link+' target="_blank">'+arrFir[i].name+'</a></li> ');
+            }
+            for(var i=0;i<arrSec.length;i++){
+                $('#fir li').append('<li><a href="#">'+arrSec[i]+'</a></li> ');
+            }
+        });
+    </script>
+</head>
+
+<body>
+<h2>jquery 前追加和后追加</h2>
+<ul>
+    <li>aaaa</li>
+    <li>bbbb</li>
+    <li>cccc</li>
+</ul>
+名称：<input type="text" name="uname" />
+<button>前添加</button>
+<button>后追加</button>
+
+
+<br />
+
+<div id="thir">
+    <ul id="fir"></ul>
+    <ul id="sec"></ul>
+</div>
+</body>
+</html>

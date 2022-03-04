@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插入元素</title>
+</head>
+<body>
+    <a href="https://blog.csdn.net/ztnhnr/article/details/107143878">jquery 插入处理</a>
+    <ul class="container">
+        <li>第一个元素</li>
+        <li>第二个元素</li>
+    </ul>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+    // 在目标元素内部最前面插入一个元素
+    $(function () {
+        $(".container").prepend('<li style="color:red">第0个元素</li>');
+    })
+</script>
+</html>

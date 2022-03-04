@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+
+<button>在每个P元素结尾插入span元素。</button>
+<p>这是一个段落。</p>
+<p>这是另一个段落。</p>
+<ul class="container">
+    <h3>123</h3>
+    <li class="first">第一个元素</li>
+    <li>第二个元素</li>
+    <li>第三个元素</li>
+</ul>
+<ul class="container">
+    <h3>456</h3>
+    <li class="first">第四个元素</li>
+    <li>第五个元素</li>
+    <li>第六个元素</li>
+</ul>
+
+<ul class="container">
+    <h3>789</h3>
+    <li class="first">第七个元素</li>
+    <li>第八个元素</li>
+    <li>第九个元素</li>
+</ul>
+
+<ul class="container">
+    <h3>789</h3>
+    <li class="first">第七个元素</li>
+    <li>第八个元素</li>
+    <li>第九个元素</li>
+</ul>
+
+<br/>
+<h2>测试动态添加</h2>
+<ul id="ulPlayPist">
+    <li class="li_style">
+        <div id="divItem1" class="div_item_v_style">冰墩墩</div>
+    </li>
+</ul>
+
+</body>
+<script>
+    $(document).ready(function(){
+        let k = $(".container")
+        console.warn("kkk:",k)
+        let name = "beuti"
+        $("button").click(function(){
+            $("<li style='color: cornflowerblue;'>Hello World!</li>").appendTo(".container:eq(1)");
+            // $("ul li:eq(1)").attr({id:"lili"});
+            $("ul:eq(1)>li").attr({class:name});
+        });
+        for(let i=0;i <4; i++){
+            console.warn(" $(\".container:eq(i)\"):", $(".container:eq("+ i +")"))
+            $(".container:eq("+ i +")").attr({class:'work'})
+
+            let content ='<li style="color:orangered">I come in </li>'
+            $(content).appendTo(".container:eq("+ i +")")
+        }
+
+        //添加数据到UL
+        for (var i = 0; i < 3; i++) {
+            var li_str = '<li class="li_style">';
+            li_str += '<div id="divItem'+(i+1).toString()+'" class="div_item_v_style">雪融融</div></li>';
+            $('#ulPlayPist').append(li_str);
+        }
+
+
+    });
+</script>
+</html>

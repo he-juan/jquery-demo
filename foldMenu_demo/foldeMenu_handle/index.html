@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>折叠式菜单处理</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Collapsible List 1</legend>
+        <ul id="container">
+            <li>0 前言</li>
+            <li>1 CLR的执行模型
+                <ul>
+                    <li>1.1 将源代码编译成托管模块</li>
+                    <li>1.4 执行程序集的代码
+                        <ul>
+                            <li>1.4.1 IL和验证</li>
+                            <li>1.4.2 不安全的代码</li>
+                        </ul>
+                    </li>
+                    <li>1.6 通过类型系统</li>
+                </ul>
+            </li>
+            <li>2 类型基础
+                <ul>
+                    <li>2.1 System.Object</li>
+                    <li>2.2 类型转换</li>
+                </ul>
+            </li>
+            <li>3 基元类型、引用类型、值类型
+                <ul>
+                    <li>3.1 基元类型</li>
+                    <li>3.2 引用类型</li>
+                    <li>3.3 值类型</li>
+                </ul>
+            </li>
+
+        </ul>
+    </fieldset>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $(document).ready(function () {
+        //加载时隐藏子菜单
+        $('li ul').hide();
+        //不包含子菜单时鼠标指针和项目图标
+        $('li:not(:has(ul))')
+            .css({ 'cursor': 'default', 'list-style-image': 'none' });
+        //包含子菜单时鼠标指针和项目图标
+        $('li:has(ul)')
+            .css({ 'cursor': 'pointer', 'list-style-image': 'url(plus.gif)' });
+        //单击含子菜单的项
+        // $('li:has(ul)').click(function (event) {
+        //     if (this == event.target) {
+        //         if ($(this).children().is(':hidden')) {
+        //             $(this)
+        //                 .css('list-style-image', 'url(minus.gif)')
+        //                 .children().show();
+        //         }
+        //         else {
+        //             $(this)
+        //                 .css('list-style-image', 'url(plus.gif)')
+        //                 .children().hide();
+        //         }
+        //     }
+        // })
+        /****** 此功能和上述一样******/
+        $('li:has(ul)').click(function (event) {
+            if (this == event.target) {
+                $(this).css('list-style-image', ($(this).children().is(':hidden') ? 'url(minus.gif)' : 'url(plus.gif)'));
+                $(this).children().toggle();
+            }
+        })
+        let content = $('<li> 4 属性和内容的设置 </li>')
+        $("#container").append(content)
+    })
+</script>
+</html>

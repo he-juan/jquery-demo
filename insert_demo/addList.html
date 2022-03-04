@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addContent</title>
+</head>
+<body>
+
+    <ul class="modules list-unstyled">
+        <li class="item active" id="left-navigation">
+            <!-- 侧边导航栏 插入html动态变化-->
+        </li>
+    </ul>
+
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            var navigation = [{
+                text: "安全中心",
+                child: [{text: "系统安全预警", url: ""}, {text: "子账号权限", url: ""}]
+            }, {
+                text: "黑名单管理",
+                child: [{text: "旺旺黑名单", url: ""}, {text: "手机号黑名单", url: ""}]
+            }, {
+                text: "短信充值",
+                child: [{text: "短信充值", url: ""}]
+            }];
+
+            for (var num = 1; num <= navigation.length; num++) {
+                var attrs = navigation[num - 1].text;
+                var childs = navigation[num - 1].child;
+
+                var $l_num = $("<h5 ng-click='switchMainModule($event)'></h5>").text(attrs);  //第一层
+                var $u_num = $("<ul class='sub-modules list-unstyled'></ul>");		//第一层
+                $("#left-navigation").append($l_num, $u_num);  //插入
+
+                for (var n = 1; n <= childs.length; n++) {
+                    var $L_n = $("<li class='sub-module-item' data-module='discountList'></li>");
+                    var $a_n = $("<a></a>").text(childs[n - 1].text);
+                    // var $a_n = $("<a></a>").text(childs[n - 1].text).attr("href", childs[n - 1].url);
+                    $u_num.append($L_n); //插入第二层
+                    $L_n.append($a_n);   //插入第三城
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
